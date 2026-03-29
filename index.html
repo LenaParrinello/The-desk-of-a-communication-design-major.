@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lena Parrinello Project 2</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="cell">
+    <img src="jail.jpg" alt="">
+</div>
+
+<div>
+    <h1>The Desk of a Second Year Parsons Communication Design Major</h1>
+</div>
+
+<div>
+    <p id="messText">jeez... what a mess. click on the trash to clean up.</p>
+</div>
+
+<!-- Guard is fixed to the bottom-right of the viewport, z-index 1 keeps him behind desk elements (z-index 10) -->
+<div id="guardPopup" style="display:none;">
+    <div id="guardSpeechBubble" style="display:none;">
+        <p>GET BACK TO WORK!!!</p>
+    </div>
+    <img src="prison.png" alt="guard" onclick="closeGuardSpeech()">
+</div>
+
+<div class="desk-scene">
+
+    <div class="wood">
+        <img src="download.jpg" alt="">
+    </div>
+
+    <div class="moniter clickable">
+        <img src="monitor 2.png" alt="monitor" onclick="openInfo('moniter')">
+        <div class="fake-browser">
+            <div class="browser-bar">
+                <div class="browser-tab active" onclick="switchTab('video', this)">Logic Pro</div>
+                <div class="browser-tab" onclick="switchTab('pinterest', this)">Indesign</div>
+                <div class="browser-tab" onclick="switchTab('portfolio', this)">Illustrator</div>
+                
+            </div>
+            <div class="browser-content">
+                <div class="tab-panel" id="tab-video">
+                    <video id="myVideo" src="piano bruh vid.mp4" controls onclick="openGuardSpeech()"></video>
+                </div>
+                <div class="tab-panel" id="tab-pinterest" style="display:none;">
+                    <img src="project2.jpg" alt="Pinterest" class="tab-img">
+                </div>
+                <div class="tab-panel" id="tab-portfolio" style="display:none;">
+                    <img src="project 1.jpg" alt="inspo" class="tab-img">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="keys clickable">
+        <img src="keys.png" alt="" onclick="openInfo('keys')">
+    </div>
+
+    <div class="coster clickable">
+        <img src="coster.png" alt="" onclick="openInfo('coster')">
+    </div>
+
+    <div class="plant clickable">
+        <img src="plant.png" alt="" onclick="openInfo('plant')">
+    </div>
+
+    <div class="tablet clickable">
+        <img src="tablet.png" alt="" onclick="openInfo('tablet')">
+    </div>
+
+    <div class="mouse clickable">
+        <img src="mouse.png" alt="" onclick="openInfo('mouse')">
+    </div>
+
+    <div class="spindrift clickable">
+        <img src="spin drift.png" alt="" onclick="openInfo('spindrift')">
+    </div>
+
+    <div class="laptop">
+        <img src="laptop.png" alt="" onclick="openGame()">
+    </div>
+
+    <div class="clutter bannana" id="clutter-b0">
+        <img src="banana Background Removed.png" alt="">
+    </div>
+    <div class="clutter paperball" id="clutter-p0">
+        <img src="paper ball Background Removed.png" alt="">
+    </div>
+    <div class="clutter bannana1" id="clutter-b1">
+        <img src="banana Background Removed.png" alt="">
+    </div>
+    <div class="clutter paperball1" id="clutter-p1">
+        <img src="paper ball Background Removed.png" alt="">
+    </div>
+    <div class="clutter bannana2" id="clutter-b2">
+        <img src="banana Background Removed.png" alt="">
+    </div>
+    <div class="clutter paperball2" id="clutter-p2">
+        <img src="paper ball Background Removed.png" alt="">
+    </div>
+    <div class="clutter bannana3" id="clutter-b3">
+        <img src="banana Background Removed.png" alt="">
+    </div>
+    <div class="clutter paperball3" id="clutter-p3">
+        <img src="paper ball Background Removed.png" alt="">
+    </div>
+    <div class="clutter bannana4" id="clutter-b4">
+        <img src="banana Background Removed.png" alt="">
+    </div>
+    <div class="clutter paperball4" id="clutter-p4">
+        <img src="paper ball Background Removed.png" alt="">
+    </div>
+
+    <div class="right1" id="right1">
+        <img src="right 1.png" alt="">
+    </div>
+    <div class="left1" id="left1">
+        <img src="left 1 .png" alt="">
+    </div>
+
+    <div class="rightfist" id="rightfist" style="display:none;">
+        <img src="right fist.png" alt="">
+    </div>
+    <div class="leftfist" id="leftfist" style="display:none;">
+        <img src="left fist.png" alt="">
+    </div>
+
+</div>
+
+<div id="infoOverlay" onclick="closeInfo()">
+    <div id="infoBox" onclick="event.stopPropagation()">
+        <img id="infoImg" src="" alt="">
+        <p id="infoDescription"></p>
+        <button id="infoClose" onclick="closeInfo()">close</button>
+    </div>
+</div>
+
+<div id="infoData" style="display:none;">
+    <p id="desc-moniter">Some intresting projects you got there...</p>
+    <p id="desc-keys">A custom built keyboard made for intense designing.</p>
+    <p id="desc-coster">Urban Outfitters coaster ft prominent civil rights activist strolling down Abbey Road.</p>
+    <p id="desc-plant">Possibly the easiest plant to keep alive.</p>
+    <p id="desc-tablet">Purchased under the impression that I would get past the learning curve of Adobe Photoshop... now used as a mouse pad.</p>
+    <p id="desc-mouse">Logitech wireless mouse.</p>
+    <p id="desc-spindrift">Undeniably the best seltzer in the game.</p>
+</div>
+
+<div id="gameScreen" style="display:none;
+ position:fixed; top:0; left:0; width:100%; height:100%;
+ z-index:999; backdrop-filter:blur(6px); background:rgba(0,0,0,0.5); 
+ align-items:center; justify-content:center;">
+    <div style="position:relative; width:700px; height:500px;">
+        <p style="font-family:Arial; font-size:15px; color:white; text-align:center; margin:0 0 6px; background:none;">
+            <strong>Claude's Interpretation of Fortnite</strong> Claude has never played Fortnite. Clearly...
+        </p>
+        <canvas id="gameCanvas" width="700" height="460" style="display:block;"></canvas>
+        <button id="pauseBtn" onclick="togglePause()" style="position:absolute; top:30px; right:0; background:none; border:1px solid white; color:white; padding:4px 12px; cursor:pointer; font-family:Arial; font-size:12px;">Pause</button>
+        <button onclick="closeGame()" style="position:absolute; top:30px; right:70px; background:none; border:1px solid white; color:white; padding:4px 12px; cursor:pointer; font-family:Arial; font-size:12px;">Close</button>
+        <div id="pauseOverlay" style="display:none; position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.75); align-items:center; justify-content:center; flex-direction:column;">
+            <div style="color:white; font-size:28px; font-weight:bold; font-family:Arial;">PAUSED</div>
+            <button onclick="togglePause()" style="margin-top:14px; padding:8px 24px; background:none; border:1px solid white; color:white; cursor:pointer; font-size:14px; font-family:Arial;">Resume</button>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
